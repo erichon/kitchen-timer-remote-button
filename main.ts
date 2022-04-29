@@ -10,11 +10,11 @@ function turnOn () {
         }
         if (pins.digitalReadPin(DigitalPin.P0) == 0) {
             alarm_on = 0
+            radio.sendValue("alarm", 0)
         }
     }
     pins.digitalWritePin(DigitalPin.P1, 0)
     pins.digitalWritePin(DigitalPin.P2, 0)
-    radio.sendValue("stop_alarm", 1)
 }
 radio.onReceivedValue(function (name, value) {
     if (name == "alarm") {
